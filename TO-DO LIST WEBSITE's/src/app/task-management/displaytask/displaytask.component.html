@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<br>
+<header>
+  <div class="container ">
+    
+  </div>
+</header>
+<!---->
+<main>
+<div class="container my-5">
+       <div class="card-body text-center">
+    <h4 class="card-title">ToDo List</h4>
+     </div>
+    <div class="card">
+        <a routerLink="/addtasks" id="add__new__list" type="button" class="btn btn-success position-absolute" ><i class="fas fa-plus"></i> Add Task</a>
+        <div *ngIf=" reslength ; then thenBlock"></div>
+        <ng-template #thenBlock>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Task</th>
+                <th scope="col">  Edit Task </th>
+                <th scope="col">Status</th>
+                <th scope="col">list info</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+              <tr *ngFor="let result of res.data">
+                <th scope="row">{{result.receivedBy}}</th>
+                <td>{{result.taskDate}}</td>
+                <td>{{result.name}}</td>
+                <td>
+                    <a class="btn btn-lg btn-outline-primary" [routerLink]="['/edit',result.taskId]" style="margin-right: 5px;">Edit</a>
+                    <button class="btn btn-lg btn-outline-primary" (click)="delete(result.taskId)">Delete</button>
+                    
+                </td>
+                
+                  <td>
+                    {{result.status}}
+                  </td>
+                <td>
+                    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Details</button>
+                    <ng-template #content let-modal>
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Task Discription</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                         <p>{{result.description}}</p>
+                        </div>
+                       
+                      </ng-template>
+                      
+                </td>
+              
+              </tr>
+            
+            </tbody>
+          </table>
+        </ng-template>
+
+        
+    </div>
+    <!-- Large modal -->
+    
+</div>
+</main>
+
+</body>
+</html>
+<router-outlet></router-outlet>

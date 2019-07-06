@@ -1,0 +1,60 @@
+<app-head></app-head>
+<html>
+    <head>
+        <title>Edit</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        
+      </head> 
+  <body>
+      <header>
+          <div class="container ">
+            
+          </div>
+        </header>
+        <br>
+      
+            <div class="card-body text-center">
+              <h4 class="card-title">Edit task</h4>
+            </div>
+              <div class=" card col-8 offset-2 my-2 p-3">
+            <form #edittask="ngForm" (ngSubmit)="onEdit()">
+              <div class="form-group">
+                <label for="taskname">Task name</label>
+                <input  type="text" [(ngModel)]="taskname" class="form-control" name="taskname" id="taskname" placeholder="Enter your taskname">
+              </div>
+              <div class="form-group">
+                <label for="taskdescription">Task Description</label>
+                <input  type="text" class="form-control" [(ngModel)]="taskdescription" name="taskdescription" id="taskdescription" placeholder="Enter your taskdescription">
+              </div>
+              <div class="form-group">
+                  <div class="input-group">
+                      <label for="datepicker">Date   </label>
+                    <input  [(ngModel)]="date"  ngbDatepicker #d="ngbDatepicker"  class="form-control" placeholder="dd-mm-yyyy" name="date" ngbDatepicker #dp="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+              <div class="form-group">
+                                      <label for="taskstatus">Task Status</label>
+                  <div class="input-group">
+  
+                    <input type="text" class="form-control" [(ngModel)]="taskstatus" name="taskstatus" placeholder="Add status" aria-label="Search for...">
+                    
+                  </div>
+                </div>
+             <div class="form-group text-center">
+               <button type="submit" class="btn btn-block btn-primary">Submit</button>
+            </div>
+          </form>
+      </div>
+    
+  
+  
+  </body>
+</html>
